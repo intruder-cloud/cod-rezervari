@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ACB59A">
+
+  <title>Portal Rezervări</title>
+
+  <style>
+    :root {
+      --bg: #ACB59A;
+      --card: #F7F8F0;
+      --ink: #1f2620;
+      --muted: #5d6459;
+      --purple: #5b3fb8;
+      --blue: #2f6bcf;
+      --line: #dcdfd2;
+      --tile-border: #8a9886;
+      --blue-tile: #e6eef6;
+      --blue-ink: #1a4a8a;
+      --purple-tile: #ece6f7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 50px 24px 25px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Segoe UI", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 36px);
+      font-weight: 700;
+    }
+
+    h1 span {
+      color: var(--purple);
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .panel {
+      margin-top: 30px;
+      background: var(--card);
+      padding: 24px;
+      border-radius: 22px;
+    }
+
+    .panel h2 {
+      margin: 0 0 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--line);
+      font-size: 17px;
+      color: var(--purple);
+      text-transform: uppercase;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .tile {
+      min-height: 230px;
+      padding: 24px;
+      border: 2px solid var(--tile-border);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(40, 50, 35, 0.18);
+    }
+
+    .tile:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 3px;
+    }
+
+    .sali {
+      background: var(--blue-tile);
+      color: var(--blue-ink);
+    }
+
+    .birouri {
+      background: var(--purple-tile);
+      color: var(--purple);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tile strong {
+      display: block;
+      font-size: 22px;
+      text-transform: uppercase;
+    }
+
+    .description {
+      display: block;
+      margin-top: 6px;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #5d664f;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 30px 16px 20px;
+      }
+
+      .panel {
+        padding: 18px;
+      }
+
+      .choices {
+        grid-template-columns: 1fr;
+      }
+
+      .tile {
+        min-height: 170px;
+        padding: 20px;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .icon {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+      }
+
+      .tile strong {
+        font-size: 19px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tile {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <h1>Ce vrei <span>să rezervi?</span></h1>
+
+    <p class="subtitle">
+      Alege tipul de spațiu și continuă pe pagina de rezervare
+    </p>
+
+    <section class="panel">
+
+      <h2>Alege ce rezervi</h2>
+
+      <div class="choices">
+
+        <!-- REZERVĂRI SĂLI -->
+        <a
+          class="tile sali"
+          href="https://rezervari-sali.onrender.com/"
+          aria-label="Deschide rezervările pentru săli de ședință"
+        >
+
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="12" y="24" width="40" height="16" rx="3"/>
+            <path d="M20 16h6 M29 16h6 M38 16h6
+                     M20 48h6 M29 48h6 M38 48h6"/>
+          </svg>
+
+          <div>
+            <strong>Săli de ședință</strong>
+
+            <span class="description">
+              Alege sala, data și intervalul orar
+            </span>
+
+            <span class="button">
+              Rezervă o sală →
+            </span>
+          </div>
+
+        </a>
+
+        
+        <a
+          class="tile birouri"
+          href="https://dacia-smart-offices.onrender.com/"
+          aria-label="Deschide rezervările pentru birouri"
+        >
+
+          <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="22" y="10" width="20" height="14" rx="2"/>
+            <path d="M32 24v5 M8 29h48 M12 29v24 M52 29v24"/>
+          </svg>
+
+          <div>
+            <strong>Birouri</strong>
+
+            <span class="description">
+              Alege biroul și ziua în care vii
+            </span>
+
+            <span class="button">
+              Rezervă un birou →
+            </span>
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    Rezervare · Intern
+  </footer>
+
+</body>
+</html>
